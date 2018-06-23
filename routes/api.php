@@ -70,4 +70,6 @@ Route::group(['middleware' => 'jwt.auth', 'namespace' => 'Api\\'], function() {
 
     Route::get('tribunalnotas/{id}', 'TribunalNotasController@index');
     Route::put('tribunalnotas/{id}', 'TribunalNotasController@update');
+
+    Route::get('encargadoinforme/{id}', 'EncargadoController@index');
 });

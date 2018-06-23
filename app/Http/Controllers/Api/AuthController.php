@@ -56,7 +56,9 @@ class AuthController extends Controller
                 $userRole [] = $role->name;
             }
         }
-
+        if ($userRole == []) {
+            return response()->json(['error' => 'invalid_credentials'], 401);
+        }
         return response()->json(compact('token','user', 'userRole', 'abilities'));
     }
 

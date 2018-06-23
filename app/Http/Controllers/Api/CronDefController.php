@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Cronograma;
 use App\Defensa;
+use App\DetalleDefensa;
 use App\Inscripciones;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -55,11 +56,18 @@ class CronDefController extends Controller
 
         $defensa->inscripcion()->associate($request->inscripcion_id);
         $defensa->cronograma()->associate($cronograma);
-        $defensa->estado = "Revicion";
+        $defensa->estado = "REVICION";
+
         $defensa->save();
         $defensa->cronograma;
         $defensa->inscripcion->user->persona;
         $defensa->inscripcion->modalidad;
+
+        $detalleDefensa = new DetalleDefensa();
+        $detalleDefensa->defensa()->associate($defensa);
+        $detalleDefensa->descripcion = trim($cronograma->descripcion);
+        $detalleDefensa->save();
+
         return response()->json(compact('defensa'));
     }
 
@@ -103,7 +111,7 @@ class CronDefController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+
     }
 
     /**

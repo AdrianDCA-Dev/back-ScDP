@@ -3,13 +3,11 @@
 namespace App\Http\Controllers\Api;
 
 use App\Controles;
-use App\Defensa;
-use App\DetalleDefensa;
-use App\Tutores;
+use App\Inscripciones;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class PlanillaContTutorController extends Controller
+class EncargadoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,9 +16,8 @@ class PlanillaContTutorController extends Controller
      */
     public function index($id)
     {
-        $tutor = Tutores::where('user_id', '=', $id)->first();
-        $control = Controles::where('tutor_id', '=', $tutor->id)->get();
-
+        $inscripcion = Inscripciones::where('user_id', '=', $id)->first();
+        $control = Controles::where('inscripcion_id', '=', $inscripcion->id)->get();
         $control->each(function ($control){
             $control->planilla;
             $control->inscripcion->user->persona;
@@ -82,41 +79,9 @@ class PlanillaContTutorController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $control = Controles::find($id);
-
-        $control->estado = 'REVISADO';
-        $control->save();
-     /*   $defensaData = [
-            'estado' => 'AprobadoUno'
-        ];
-        $defensa = Defensa::where('inscripcion_id', '=', $control->inscripcion_id)->update($defensaData);
-
-        $detalleDefensa = new DetalleDefensa();
-        $detalleDefensa->defensa()->associate($defensa);
-        $detalleDefensa->descripcion = "Aprobado para la defensa UNO";
-        $detalleDefensa->save();*/
-
-        return response()->json(compact('control'));
+        //
     }
 
-    public function aprobadouno($id)
-    {
-        /*$defensa = Defensa::where('inscripcion_id', '=', $id)->find();;
-
-        $defensa->estado = 'AprobadoUno';
-        $defensa->save();*/
-        $defensaData = [
-            'estado' => 'AprobadoUno'
-        ];
-        $defensa = Defensa::where('inscripcion_id', '=', $id)->update($defensaData);
-
-        $detalleDefensa = new DetalleDefensa();
-        $detalleDefensa->defensa()->associate($defensa);
-        $detalleDefensa->descripcion = "Aprobado para la defensa UNO";
-        $detalleDefensa->save();
-
-        return response()->json(compact('defensa'));
-    }
     /**
      * Remove the specified resource from storage.
      *
