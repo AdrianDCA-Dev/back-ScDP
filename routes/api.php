@@ -72,4 +72,9 @@ Route::group(['middleware' => 'jwt.auth', 'namespace' => 'Api\\'], function() {
     Route::put('tribunalnotas/{id}', 'TribunalNotasController@update');
 
     Route::get('encargadoinforme/{id}', 'EncargadoController@index');
+
+    Route::get('facultad', 'FacultadCarrera@index');
+    Route::get('carrerafacultad/{id}', 'FacultadCarrera@carrerafacultad');
+
+    Route::get('reportema', 'FacultadCarrera@reportemas');
 });

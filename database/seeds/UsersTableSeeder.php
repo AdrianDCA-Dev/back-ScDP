@@ -23,9 +23,9 @@ class UsersTableSeeder extends Seeder
         $academico->save();*/
 
         $administrativo = new \App\User();
-        $administrativo->name = "joselito";
-        $administrativo->email = "admin@admin.com";
-        $administrativo->password = bcrypt('123456789');
+        $administrativo->name = "Lic. Eiber";
+        $administrativo->email = "eiber01@gmail.com";
+        $administrativo->password = bcrypt('eiber161501');
         $administrativo->estado = 1;
         $administrativo->persona_id = 1;
 

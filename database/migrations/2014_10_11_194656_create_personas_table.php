@@ -23,7 +23,9 @@ class CreatePersonasTable extends Migration
             $table->string('direccion');
             $table->string('telefono');
             $table->string('celular');
-            $table->string('carrera');
+            $table->integer('carrera_id')->unsigned();
+
+            $table->foreign('carrera_id')->references('id')->on('carreras')->onDelete('cascade');
             $table->timestamps();
         });
     }

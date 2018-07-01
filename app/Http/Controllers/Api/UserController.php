@@ -19,7 +19,7 @@ class UserController extends Controller
     {
         $user = User::all();
         $user->each(function ($user){
-            $user->persona;
+            $user->persona->carrera;
             $user->role;
         });
 
@@ -67,7 +67,7 @@ class UserController extends Controller
         $persona->direccion = trim($request->direccion);
         $persona->telefono = trim($request->telefono);
         $persona->celular = trim($request->celular);
-        $persona->carrera = trim($request->carrera);
+        $persona->carrera()->associate($request->carrera_id);
 
         $user = new User();
         $persona->save();
@@ -78,7 +78,7 @@ class UserController extends Controller
         $user->estado = 1;
         $user->persona()->associate($persona);
         $user->save();
-        $user->persona;
+        $user->persona->carrera;
         $user->roles()->sync($request->role);
         $user->role;
         return response()->json(compact('user'));

@@ -45,7 +45,7 @@ class PermisosTableSeeder extends Seeder
         $rolTribunal->display_name = "Administrador Tribunal";
         $rolTribunal->save();
 
-        $user = User::where('email', '=', 'admin@admin.com')->first();
+        $user = User::where('email', '=', 'eiber01@gmail.com')->first();
         $user->attachRole($rolAdmin);
 
         $admin = new Permission();

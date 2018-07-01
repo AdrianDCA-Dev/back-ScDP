@@ -16,14 +16,14 @@ class PersonasTableSeeder extends Seeder
         $academico = new \App\Persona();
 
         $academico->ci = "10326598";
-        $academico->nombre = "Carlos Benito";
-        $academico->apellidos = "Choque Altamirano";
+        $academico->nombre = "Eiber";
+        $academico->apellidos = "Molina";
         $academico->sexo = 1;
-        $academico->fechaNac = "2018-02-10";
+        $academico->fechaNac = "1988-02-10";
         $academico->direccion = "B/Juan 23";
         $academico->telefono = "6689325";
         $academico->celular = "77457852";
-        $academico->carrera = "Ingenieria de Sistemas";
+        $academico->carrera_id = 4;
         $academico->save();
 /*
         $administrativo = new \App\Persona();

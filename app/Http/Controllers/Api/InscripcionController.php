@@ -8,6 +8,7 @@ use App\Inscripciones;
 use App\Tema;
 use App\Tutores;
 use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 
 class InscripcionController extends Controller
 {
@@ -48,7 +49,7 @@ class InscripcionController extends Controller
         $inscripcion = new Inscripciones();
         $inscripcion->user_id = trim($request->user_id_ins);
         $inscripcion->modalidad_id = trim($request->modalidad_id);
-        $inscripcion->fecha = trim($request->fecha);
+        $inscripcion->fecha = Carbon::now()->toDateTimeString();
         $inscripcion->estado = "Activo";
 
         

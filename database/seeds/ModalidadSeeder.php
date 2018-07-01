@@ -20,5 +20,10 @@ class ModalidadSeeder extends Seeder
         $proyecto->nombre = 'Proyecto de Grado';
         $proyecto->descripcion = 'solo proyecto de grado';
         $proyecto->save();
+
+        $examen = new \App\Modalidades();
+        $examen->nombre = 'Exámen de Grado';
+        $examen->descripcion = 'solo exámen de grado';
+        $examen->save();
     }
 }
