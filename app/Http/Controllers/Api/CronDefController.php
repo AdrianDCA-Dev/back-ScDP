@@ -56,7 +56,8 @@ class CronDefController extends Controller
 
         $defensa->inscripcion()->associate($request->inscripcion_id);
         $defensa->cronograma()->associate($cronograma);
-        $defensa->estado = "REVICION";
+        $defensa->type = "EMPEZANDO";
+        $defensa->estado = "REVISION";
 
         $defensa->save();
         $defensa->cronograma;
@@ -111,7 +112,18 @@ class CronDefController extends Controller
      */
     public function update(Request $request, $id)
     {
-
+        $defensa = Defensa::find($id);
+        $defensa->type = 'DefensaUno';
+        $defensa->save();
+        $fecha = trim($request->fechaDefModUno);
+        $cronogramaData = [
+            'fechaDefModUno' => $fecha,
+            'fechaDefModDos' => $fecha,
+            'descripcion' => $request->descripcion_cr,
+        ];
+        $defensacrono = Cronograma::where('id', '=', $defensa->cronograma_id)->update($cronogramaData);
+        $defensa->cronograma;
+        return response()->json(compact('defensa'));
     }
 
     /**

@@ -67,7 +67,7 @@ class PlanillaControlController extends Controller
         $control->inscripcion()->associate($request->inscripcion_id);
         $control->tutor()->associate($request->tutor_id);
         $control->descripcion = trim($request->descripcion);
-        $control->estado = 'Revicion';
+        $control->estado = 'REVISION';
         $control->save();
         $control->planilla;
         $control->inscripcion->user->persona;

@@ -21,7 +21,7 @@ class InscripcionController extends Controller
     {
         $inscripcion = Tutores::all();
         $inscripcion->each(function ($inscripcion){
-            $inscripcion->tema->inscripcion->user->persona;
+            $inscripcion->tema->inscripcion->user->persona->carrera;
             $inscripcion->tema->inscripcion->modalidad;
             $inscripcion->user->persona;
         });
@@ -68,7 +68,7 @@ class InscripcionController extends Controller
         $tutor->descripcion = trim($request->descripcion_tu);
 
         $tutor->save();
-        $tutor->tema->inscripcion->user->persona;
+        $tutor->tema->inscripcion->user->persona->carrera;
         $tutor->tema->inscripcion->modalidad;
         $tutor->user->persona;
 

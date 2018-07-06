@@ -44,9 +44,40 @@ class PermisosTableSeeder extends Seeder
         $rolTribunal->name = 'Tribunal';
         $rolTribunal->display_name = "Administrador Tribunal";
         $rolTribunal->save();
-
+        //ADMINISTRADOR
         $user = User::where('email', '=', 'eiber01@gmail.com')->first();
         $user->attachRole($rolAdmin);
+        /*//
+        //ENCARGADO
+        $user = User::where('email', '=', 'sabrina@gmail.com')->first();
+        $user->attachRole($rolEncargado);
+        //
+        //DOCENTE
+        $user = User::where('email', '=', 'jose@gmail.com')->first();
+        $user->attachRole($rolDocente);
+
+        $user = User::where('email', '=', 'ramiro@gmail.com')->first();
+        $user->attachRole($rolDocente);
+
+        $user = User::where('email', '=', 'julia@gmail.com')->first();
+        $user->attachRole($rolDocente);
+        //
+        //ALUMNOS
+        $user = User::where('email', '=', 'estudiante1@gmail.com')->first();
+        $user->attachRole($rolEstudiante);
+
+        $user = User::where('email', '=', 'estudiante2@gmail.com')->first();
+        $user->attachRole($rolEstudiante);
+
+        $user = User::where('email', '=', 'estudiante3@gmail.com')->first();
+        $user->attachRole($rolEstudiante);
+
+        $user = User::where('email', '=', 'estudiante4@gmail.com')->first();
+        $user->attachRole($rolEstudiante);
+
+        $user = User::where('email', '=', 'estudiante5@gmail.com')->first();
+        $user->attachRole($rolEstudiante);
+        //*/
 
         $admin = new Permission();
         $admin->name = "admin";

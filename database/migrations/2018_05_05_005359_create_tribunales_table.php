@@ -18,7 +18,7 @@ class CreateTribunalesTable extends Migration
             $table->integer('user_id')->unsigned();
             $table->integer('defensa_id')->unsigned();
             $table->text('descripcion')->nullable();
-            $table->integer('nota')->nullable();
+            $table->string('nota')->nullable();
 
             $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
             $table->foreign('defensa_id')->references('id')->on('defensas')->onUpdate('cascade')->onDelete('cascade');

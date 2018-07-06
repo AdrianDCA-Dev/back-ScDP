@@ -33,6 +33,8 @@ Route::group(['middleware' => 'jwt.auth', 'namespace' => 'Api\\'], function() {
     Route::get('getestudiante', 'InscripcionController@estudiante');
     Route::get('getdocente', 'InscripcionController@docente');
 
+    Route::get('inscripto', 'EncargadoController@inscrip');
+
     Route::get('inscripcion', 'InscripcionController@index');
     Route::post('inscripcion', 'InscripcionController@store');
     Route::put('inscripcion/{id}', 'InscripcionController@update');
@@ -65,6 +67,7 @@ Route::group(['middleware' => 'jwt.auth', 'namespace' => 'Api\\'], function() {
     Route::post('planillatutor', 'PlanillaContTutorController@store');
     Route::put('planillatutor/{id}', 'PlanillaContTutorController@update');
     Route::put('aprobadouno/{id}', 'PlanillaContTutorController@aprobadouno');
+    Route::get('listestudiante/{id}', 'PlanillaContTutorController@docentestudiante');
 
     Route::get('tutortribunales/{id}', 'TutorTribunalController@index');
 
@@ -77,4 +80,7 @@ Route::group(['middleware' => 'jwt.auth', 'namespace' => 'Api\\'], function() {
     Route::get('carrerafacultad/{id}', 'FacultadCarrera@carrerafacultad');
 
     Route::get('reportema', 'FacultadCarrera@reportemas');
+
+    Route::get('reporteaa', 'ReportesController@ReporteAA');
+    Route::get('reportecr', 'ReportesController@ReporteC');
 });

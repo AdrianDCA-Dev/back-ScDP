@@ -18,7 +18,7 @@ class TribunalNotasController extends Controller
         $tribunalnotas = Tribunales::where('user_id', '=', $id)->get();
         $tribunalnotas->each(function ($tribunalnotas){
             $tribunalnotas->user->persona;
-            $tribunalnotas->defensa->inscripcion->user->persona;
+            $tribunalnotas->defensa->inscripcion->user->persona->carrera;
             $tribunalnotas->defensa->inscripcion->modalidad;
         });
 

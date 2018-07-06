@@ -20,7 +20,7 @@ class TribunalController extends Controller
         $tribunal = Tribunales::all();
         $tribunal->each(function ($tribunal){
             $tribunal->user->persona;
-            $tribunal->defensa->inscripcion->user->persona;
+            $tribunal->defensa->inscripcion->user->persona->carrera;
             $tribunal->defensa->inscripcion->modalidad;
         });
 

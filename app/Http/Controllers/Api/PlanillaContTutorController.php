@@ -127,4 +127,15 @@ class PlanillaContTutorController extends Controller
     {
         //
     }
+
+    public function docentestudiante($id)
+    {
+        $listestudiante = Tutores::where('user_id', '=', $id)->get();
+        $listestudiante->each(function ($listestudiante){
+            $listestudiante->user->persona->carrera;
+            $listestudiante->tema->inscripcion->user->persona->carrera;
+            $listestudiante->tema->inscripcion->modalidad;
+        });
+        return response()->json(compact('listestudiante'));
+    }
 }

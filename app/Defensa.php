@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Defensa extends Model
 {
-    protected $fillable = ['inscripcion_id', 'cronograma_id', 'estado'];
+    protected $fillable = ['inscripcion_id', 'cronograma_id', 'type', 'estado'];
 
     public function inscripcion()
     {

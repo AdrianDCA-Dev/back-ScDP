@@ -17,6 +17,7 @@ class CreateDefensasTable extends Migration
             $table->increments('id');
             $table->integer('inscripcion_id')->unsigned();
             $table->integer('cronograma_id')->unsigned();
+            $table->enum('type', ['EMPEZANDO','DefensaUno', 'DefensaDos', 'DefensaTres', 'APROBADO']);
             $table->string('estado');
 
             $table->foreign('inscripcion_id')->references('id')->on('inscripciones')->onUpdate('cascade')->onDelete('cascade');

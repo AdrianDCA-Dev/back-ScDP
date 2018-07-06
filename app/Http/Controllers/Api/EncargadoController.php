@@ -14,6 +14,16 @@ class EncargadoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function inscrip()
+    {
+        $estudiante = Inscripciones::all();
+        $estudiante->each(function ($estudiante){
+            $estudiante->user->persona->carrera;
+        });
+
+        return response()->json(compact('estudiante'));
+    }
+
     public function index($id)
     {
         $inscripcion = Inscripciones::where('user_id', '=', $id)->first();
