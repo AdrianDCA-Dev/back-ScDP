@@ -81,6 +81,7 @@ Route::group(['middleware' => 'jwt.auth', 'namespace' => 'Api\\'], function() {
 
     Route::get('reportema', 'FacultadCarrera@reportemas');
 
-    Route::get('reporteaa', 'ReportesController@ReporteAA');
+    Route::get('inscripreport', 'ReportesController@inscrip');
+    Route::get('reporteaa/{id}', 'ReportesController@ReporteAA');
     Route::get('reportecr', 'ReportesController@ReporteC');
 });

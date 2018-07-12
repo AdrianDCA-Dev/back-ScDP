@@ -11,7 +11,16 @@ use Illuminate\Support\Facades\DB;
 
 class ReportesController extends Controller
 {
-    public function ReporteAA()
+    public function inscrip()
+    {
+        $inscrip = Inscripciones::all();
+        $inscrip->each(function ($inscrip){
+            $inscrip->user->persona;
+        });
+
+        return response()->json(compact('inscrip'));
+    }
+    public function ReporteAA($id)
     {
         $reporaa = DB::select('SELECT controles.estado, personas.nombre, personas.apellidos FROM inscripciones
                                     INNER JOIN controles
@@ -19,7 +28,8 @@ class ReportesController extends Controller
                                     INNER JOIN users
                                     ON inscripciones.user_id = users.id
                                     INNER JOIN personas
-                                    ON users.persona_id = personas.id');
+                                    ON users.persona_id = personas.id
+                                    WHERE inscripciones.id = ?',[$id]);
 
         return response()->json(compact('reporaa'));
     }

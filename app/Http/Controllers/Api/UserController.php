@@ -19,7 +19,7 @@ class UserController extends Controller
     {
         $user = User::all();
         $user->each(function ($user){
-            $user->persona->carrera;
+            $user->persona->carrera->facultad;
             $user->role;
         });
 
@@ -115,7 +115,31 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $persona = Persona::find($id);
+        $persona->ci = trim($request->ci);
+        $persona->nombre = trim($request->nombre);
+        $persona->apellidos = trim($request->apellidos);
+        //$persona->sexo = trim($request->sexo);
+        $persona->fechaNac = trim($request->fechaNac);
+        $persona->direccion = trim($request->direccion);
+        $persona->telefono = trim($request->telefono);
+        $persona->celular = trim($request->celular);
+        //$persona->carrera()->associate($request->carrera_id);
+
+        $userData = [
+            'name' => trim($request->name),
+            'email' => trim(strtolower($request->email)),
+            'password' => bcrypt(trim($request->password))
+        ];
+        $user = User::where('persona_id', '=', $persona->id)->update($userData);
+
+        //$user = User::where('persona_id', '=', $persona->id)->first();
+        $persona->save();
+
+        //$user->persona->carrera;
+        //$user->roles()->sync($request->role);
+        //$user->role;
+        return response()->json(compact('user'));
     }
 
     /**
