@@ -47,7 +47,7 @@ class PermisosTableSeeder extends Seeder
         //ADMINISTRADOR
         $user = User::where('email', '=', 'eiber01@gmail.com')->first();
         $user->attachRole($rolAdmin);
-        /*//
+        //
         //ENCARGADO
         $user = User::where('email', '=', 'sabrina@gmail.com')->first();
         $user->attachRole($rolEncargado);
@@ -77,7 +77,7 @@ class PermisosTableSeeder extends Seeder
 
         $user = User::where('email', '=', 'estudiante5@gmail.com')->first();
         $user->attachRole($rolEstudiante);
-        //*/
+        //
 
         $admin = new Permission();
         $admin->name = "admin";

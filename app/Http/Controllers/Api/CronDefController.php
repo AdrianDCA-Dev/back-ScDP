@@ -74,7 +74,7 @@ class CronDefController extends Controller
 
     public function getInscripcionActivos()
     {
-        $inscripcion = Inscripciones::where('estado', '=', 'Activo')->get();
+        $inscripcion = Inscripciones::where('estado', '=', 1)->get();
         $inscripcion->each(function ($inscripcion){
             $inscripcion->user->persona;
         });

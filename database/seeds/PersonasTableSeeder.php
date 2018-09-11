@@ -25,7 +25,7 @@ class PersonasTableSeeder extends Seeder
         $academico->carrera_id = 4;
         $academico->save();
         //
-        /*//ENCARGADO
+        //ENCARGADO
         $encargado = new \App\Persona();
         $encargado->ci = "66666559";
         $encargado->nombre = "Secretaria";
@@ -134,7 +134,7 @@ class PersonasTableSeeder extends Seeder
         $alumno5->telefono = "6689325";
         $alumno5->celular = "77457852";
         $alumno5->carrera_id = 12;
-        $alumno5->save();*/
+        $alumno5->save();
 
     }
 }

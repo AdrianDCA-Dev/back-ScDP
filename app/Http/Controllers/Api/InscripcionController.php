@@ -50,7 +50,7 @@ class InscripcionController extends Controller
         $inscripcion->user_id = trim($request->user_id_ins);
         $inscripcion->modalidad_id = trim($request->modalidad_id);
         $inscripcion->fecha = Carbon::now()->toDateTimeString();
-        $inscripcion->estado = "Activo";
+        $inscripcion->estado = 1;
 
         
         $tema = new Tema();
@@ -106,7 +106,28 @@ class InscripcionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $inscripcion = Inscripciones::find($id);
+        $inscripcion->user_id = trim($request->user_id_ins);
+        $inscripcion->modalidad_id = trim($request->modalidad_id);
+        $inscripcion->fecha = Carbon::now()->toDateTimeString();
+        $inscripcion->estado = trim($request->estado);
+        $inscripcion->save();
+
+        $temaData = [
+            'nombre' => $request->nombre,
+            'descripcion' => $request->descripcion_ins,
+        ];
+        $temaupdate = Tema::where('inscripcion_id', '=', $inscripcion->id)->update($temaData);
+
+        $tema = Tema::where('inscripcion_id', '=', $inscripcion->id)->get();
+        /* Realizar actualizacion de tutor
+         * $tutorData = [
+            'user_id' => $request->user_id_tu,
+            'descripcion' => $request->descripcion_tu,
+        ];
+        $tutorupdate = Tutores::where('tema_id', '=', $tema->id)->update($tutorData);*/
+
+        return response()->json('full');
     }
 
     /**

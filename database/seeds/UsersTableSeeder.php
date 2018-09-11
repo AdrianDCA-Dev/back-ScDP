@@ -21,7 +21,7 @@ class UsersTableSeeder extends Seeder
         $administrativo->save();
         //
 
-       /* //ENCARGADO
+        //ENCARGADO
         $encargado = new \App\User();
         $encargado->name = "Lic. Sabrina";
         $encargado->email = "sabrina@gmail.com";
@@ -97,6 +97,6 @@ class UsersTableSeeder extends Seeder
         $estudiante5->estado = 1;
         $estudiante5->persona_id = 10;
         $estudiante5->save();
-        //*/
+        //
     }
 }

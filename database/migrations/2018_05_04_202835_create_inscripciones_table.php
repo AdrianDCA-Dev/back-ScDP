@@ -18,7 +18,7 @@ class CreateInscripcionesTable extends Migration
             $table->integer('user_id')->unsigned();
             $table->integer('modalidad_id')->unsigned();
             $table->dateTime('fecha');
-            $table->string('estado');
+            $table->boolean('estado');
 
             $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade');
             $table->foreign('modalidad_id')->references('id')->on('modalidades');
